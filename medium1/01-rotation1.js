@@ -41,7 +41,7 @@ Main function
 - Create new array.
 - Slice elements from the 2nd element (index 1) to the end of the original
   array, and copy those into the new array.
-- Select the first element from the original array, and copy it into the new
+- Slice the first element from the original array, and copy it into the new
   array.
 - Return the new array.
 
@@ -52,7 +52,7 @@ Main function
 function rotateArray(array) {
   // No need to write `return undefined`; it will return `undefined` by default.
   if (arguments.length === 0 || !Array.isArray(array)) return undefined;
-  if (array.length === 0) return [];
+  // if (array.length === 0) return [];
   // Using bracket notation (array[0]) or spreadj [...array] will convert
   // missing elements into `undefined`. Must use slice().
   return array.slice(1).concat(array.slice(0, 1));
@@ -65,6 +65,15 @@ console.log(rotateArray(['a'])); // ["a"]
 console.log(rotateArray([1, 'a', 3, 'c'])); // ["a", 3, "c", 1]
 console.log(rotateArray([{ a: 2 }, [1, 2], 3])); // [[1, 2], 3, { a: 2 }]
 console.log(rotateArray([])); // []
+
+// special input
+let specialInputs = [null, NaN, undefined, '', [], {}, -0, -Infinity, false, function foo(){}];
+// console.log(specialInputs = rotateArray(specialInputs));
+// console.log(specialInputs = rotateArray(specialInputs));
+// console.log(specialInputs = rotateArray(specialInputs));
+// console.log(specialInputs = rotateArray(specialInputs));
+// console.log(specialInputs = rotateArray(specialInputs)); 
+
 
 // sparse arrays
 console.log(rotateArray([,])); // [<1 empty item>]
