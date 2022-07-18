@@ -74,27 +74,43 @@ Algorithm
 'use strict';
 
 const BLOCK_LETTERS = {
-  B: 'O', O: 'B',
-  X: 'K', K: 'X',
-  D: 'Q', Q: 'D',
-  C: 'P', P: 'C',
-  N: 'A', A: 'N',
-  G: 'T', T: 'G',
-  R: 'E', E: 'R',
-  F: 'S', S: 'F',
-  J: 'W', W: 'J',
-  H: 'U', U: 'H',
-  V: 'I', I: 'V',
-  L: 'Y', Y: 'L',
-  Z: 'M', M: 'Z',
+  B: 'O',
+  O: 'B',
+  X: 'K',
+  K: 'X',
+  D: 'Q',
+  Q: 'D',
+  C: 'P',
+  P: 'C',
+  N: 'A',
+  A: 'N',
+  G: 'T',
+  T: 'G',
+  R: 'E',
+  E: 'R',
+  F: 'S',
+  S: 'F',
+  J: 'W',
+  W: 'J',
+  H: 'U',
+  U: 'H',
+  V: 'I',
+  I: 'V',
+  L: 'Y',
+  Y: 'L',
+  Z: 'M',
+  M: 'Z',
 };
 
 function isBlockWord(word) {
+  if (arguments.length < 1) return false;
+  if (/[^a-z]/i.test(word)) return false;
+
   let blocks = Object.assign({}, BLOCK_LETTERS);
 
   for (let letter of word.toUpperCase()) {
     let pairedLetter = blocks[letter];
-    if (!pairedLetter) return false;
+    if (pairedLetter === undefined) return false;
     delete blocks[letter];
     delete blocks[pairedLetter];
   }
